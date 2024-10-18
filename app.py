@@ -33,7 +33,7 @@ import os
 from openai import OpenAI
 import streamlit as st
 
-load_dotenv(".\.env")
+load_dotenv()
 
 st.title("챗봇과 대화를 해보세요.")
 
