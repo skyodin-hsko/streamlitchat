@@ -28,17 +28,25 @@ import pandas as pd
 # st.write(df)
 ##################################################################################################################
 # 챗봇 가져오기
+from dotenv import load_dotenv
+import os
 from openai import OpenAI
 import streamlit as st
 
+load_dotenv(".\.env")
+
 st.title("챗봇과 대화를 해보세요.")
 
-openai_api_key = st.text_input("Enter your OpenAI API key")
+# openai_api_key = st.text_input("Enter your OpenAI API key")
+openai_api_key = os.getenv("OPENAI_API_KEY")
+
+# st.write(f"Loaded OpenAI API Key: {openai_api_key}")
 
 client = OpenAI(api_key=openai_api_key)
 
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-4o"
+    # st.session_state["openai_model"] = "gpt-3.5-turbo"
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
